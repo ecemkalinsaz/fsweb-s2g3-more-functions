@@ -16,9 +16,15 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+//Asagidaki ornek fonksiyon "get file name from path in nodejs" arastirma sonuclarindan bulundu.
+function dosyaAdiniBul(path) {
+  const pathArray = path.split("/");
+  const lastIndex = pathArray.length - 1;
+  return pathArray[lastIndex];
 }
+console.log(dosyaAdiniBul("C:/Users/johnsmith/Music/Beethoven_5.mp3"));
+console.log(dosyaAdiniBul("Beethoven_5.mp3"));
+console.log(dosyaAdiniBul(""));
 
 /*
   GÖREV 2
@@ -38,9 +44,19 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+//javascript how to calculate average of an array
+function ortalamaBul(arr) {
+  if (arr.length === 0) {
+    return null
+  } 
+  const sum = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  const average = sum / arr.length;
+  return average;
 }
+console.log(ortalamaBul([]));
+console.log(ortalamaBul([4]));
+console.log(ortalamaBul([50, -26, 153, 7]));
+console.log(ortalamaBul([109, 216, 288, 143, 71, 185, -278, 194, 5]));
 
 /*
   GÖREV 3
@@ -62,9 +78,22 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamadanBuyukleriBul(arr, averageFunction) {
+  const average = averageFunction(arr);
+  if (arr.length === 0) {
+    return null
+  } 
+  const returnVariable = arr.filter((a) => {
+    if (a >= average) {
+      return true
+    } // bunu `return (a >= average)` olarak da yazabilirdik if condition kullanmadan.
+  })
+  return returnVariable;
 }
+console.log(ortalamadanBuyukleriBul([], ortalamaBul));
+console.log(ortalamadanBuyukleriBul([4], ortalamaBul));
+console.log(ortalamadanBuyukleriBul([50, -26, 153, 7], ortalamaBul));
+console.log(ortalamadanBuyukleriBul([109, 216, 288, 143, 71, 185, -278, 194, 5], ortalamaBul));
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
